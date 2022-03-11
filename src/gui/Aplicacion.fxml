@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AplicacionController">
+   <children>
+      <TabPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Pedidos">
+            <content>
+              <AnchorPane fx:id="PedidosAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#limpiarTabPedidos" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TitledPane fx:id="clientesTitledPane" layoutX="22.0" layoutY="44.0" prefHeight="686.0" prefWidth="367.0" text="Clientes" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="44.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="530.0" prefWidth="365.0">
+                                 <children>
+                                    <Label text="Nombre del cliente">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nombreClienteTextField" alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="322.0" />
+                                    <HBox alignment="CENTER" prefHeight="141.0" prefWidth="337.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="61.0" prefWidth="349.0" spacing="5.0">
+                                             <children>
+                                                <Button fx:id="adicionarClienteButton" mnemonicParsing="false" onAction="#adicionarCliente" prefHeight="42.0" prefWidth="114.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="26.0" fitWidth="23.0">
+                                                         <image>
+                                                            <Image url="@../img/clienteAdd.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="modificarClienteButton" disable="true" mnemonicParsing="false" onAction="#modificarCliente" prefHeight="42.0" prefWidth="114.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="28.0" fitWidth="26.0">
+                                                         <image>
+                                                            <Image url="@../img/clienteMod.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="eliminarClienteButton13" disable="true" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="42.0" prefWidth="114.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="13.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="28.0" fitWidth="26.0">
+                                                         <image>
+                                                            <Image url="@../img/clienteDel.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="clientesTableView" onMouseClicked="#seleccionarClientes" prefHeight="506.0" prefWidth="337.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="nombreClienteColumn" prefWidth="298.0" text="Clientes" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#1f09ed82" />
+                           </effect>
+                        </TitledPane>
+                        <Label layoutX="22.0" layoutY="6.0" text="Realizar pedido">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <TitledPane fx:id="pedidosGestionTitledPane" layoutX="378.0" layoutY="44.0" prefHeight="685.0" prefWidth="508.0" text="Asignar productos al pedido" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="44.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="648.0" prefWidth="506.0">
+                                 <children>
+                                    <HBox prefHeight="184.0" prefWidth="418.0">
+                                       <children>
+                                          <TableView fx:id="productosPedidosTableView" prefHeight="168.0" prefWidth="225.0">
+                                             <columns>
+                                                <TableColumn fx:id="todosProductoPedidoColumn" prefWidth="98.0" text="Productos" />
+                                                <TableColumn fx:id="todosCostoProductoPedidoColum" prefWidth="75.0" text="Costo" />
+                                             </columns>
+                                          </TableView>
+                                          <HBox alignment="CENTER" prefHeight="184.0" prefWidth="313.0">
+                                             <children>
+                                                <VBox prefHeight="184.0" prefWidth="135.0" spacing="15.0">
+                                                   <children>
+                                                      <Label fx:id="costoUnitarioIngredienteColumn1" text="Cantidad">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="nombreIngredienteColumn1" text="Precio">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Tipo de moneda">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="126.0" prefWidth="129.0" spacing="15.0">
+                                                   <children>
+                                                      <TextField fx:id="cantidadProductoPedidoTextField" onKeyPressed="#validarCantidadProductoPedido" prefHeight="19.0" prefWidth="231.0" promptText="cantidad de productos" />
+                                                      <TextField fx:id="precioProductoPedidoTextField" onKeyPressed="#validarPrecioProductoPedido" promptText="precio del producto" VBox.vgrow="ALWAYS">
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                      <ComboBox fx:id="monedaProductoPedidoComboBox" prefHeight="27.0" prefWidth="188.0" promptText="tipo de moneda" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="41.0" prefWidth="478.0" />
+                                    <HBox alignment="CENTER_LEFT" prefHeight="291.0" prefWidth="486.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="276.0" prefWidth="370.0">
+                                             <children>
+                                                <TableView fx:id="pedidosProductosTableView" onMouseClicked="#seleccionarPedidosProductos" prefHeight="288.0" prefWidth="373.0" HBox.hgrow="ALWAYS">
+                                                   <columns>
+                                                      <TableColumn fx:id="productoPedidoColumn" prefWidth="75.0" text="Producto" />
+                                                      <TableColumn fx:id="cantidadProductoPedidoColumn" prefWidth="61.0" text="Cantidad" />
+                                                      <TableColumn fx:id="precioProductoPedidoColumn" prefWidth="71.0" text="Precio" />
+                                                      <TableColumn fx:id="costoProductoPedidoColumn" prefWidth="55.0" text="Costo" />
+                                                      <TableColumn fx:id="ganaciaProductoPedidoColumn" prefWidth="49.0" text="Ganancia" />
+                                                      <TableColumn fx:id="monedaProductoPedidoColumn" prefWidth="70.0" text="Moneda" />
+                                                   </columns>
+                                                </TableView>
+                                             </children></HBox>
+                                          <VBox alignment="CENTER" prefHeight="289.0" prefWidth="119.0" spacing="10.0">
+                                             <children>
+                                                <Button fx:id="adicionarPedidoButton" mnemonicParsing="false" onAction="#adicionarProductoPedido" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="21.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/addProductoPedido.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="modificarProductoPedidoButton" disable="true" mnemonicParsing="false" onAction="#modificarProductoPedido" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="21.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/upProductoPedido.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="eliminarProductoPedidoButton" disable="true" mnemonicParsing="false" onAction="#eliminarProductoPedido" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="21.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/delProductoPedido.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="35.0" prefWidth="478.0" />
+                                    <HBox alignment="CENTER" prefHeight="96.0" prefWidth="478.0">
+                                       <children>
+                                          <VBox prefHeight="92.0" prefWidth="143.0" spacing="15.0">
+                                             <children>
+                                                <Label fx:id="fechaIngredienteColumn11" text="Fecha del pedido">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="fechaIngredienteColumn111" layoutX="10.0" layoutY="145.0" text="Estado">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="184.0" prefWidth="165.0" spacing="15.0">
+                                             <children>
+                                                <DatePicker fx:id="fechaProductoPedidoDatePicker" prefHeight="25.0" prefWidth="219.0" />
+                                                <ComboBox fx:id="estadoProductoPedidoComboBox" prefHeight="27.0" prefWidth="188.0" promptText="estado del pedido" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="63.0" prefWidth="478.0" spacing="5.0">
+                                       <children>
+                                          <Button fx:id="eliminarPedidoButton" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#eliminarPedido" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/delPediddo.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="modificarPedidoButton" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#modificarPedido" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/updPedido.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="guardarPedidoButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#adicionarPedido" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/addPedido.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#210be393" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane fx:id="pedidosTitledPane" layoutX="397.0" layoutY="107.0" onMouseClicked="#seleccionarPedidos" prefHeight="623.0" prefWidth="432.0" text="Pedidos" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="397.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="107.0">
+                           <content>
+                              <TableView fx:id="pedidosTableView" prefHeight="144.0" prefWidth="576.0">
+                                 <columns>
+                                    <TableColumn fx:id="ganaciaPedidoColumn" text="Ganancia" />
+                                    <TableColumn fx:id="fechaProductoPedidoColumn" prefWidth="92.0" text="Fecha" />
+                                    <TableColumn fx:id="estadoProductoPedidoColumn" prefWidth="79.0" text="Estado" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                           <effect>
+                              <DropShadow color="#0e0ee59d" />
+                           </effect>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TitledPane>
+                        <DatePicker fx:id="fechaInicioPedidoDatePicker" layoutX="410.0" layoutY="72.0" onAction="#filtrarPedidosInicio" prefHeight="25.0" prefWidth="201.0" AnchorPane.leftAnchor="410.0" />
+                        <DatePicker fx:id="fechaFinPedidoDatePicker" layoutX="617.0" layoutY="73.0" onAction="#filtrarPedidosFin" prefHeight="25.0" prefWidth="201.0" />
+                        <Label layoutX="410.0" layoutY="43.0" text="Fecha inicio" AnchorPane.leftAnchor="410.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="617.0" layoutY="44.0" text="Fecha fin" AnchorPane.rightAnchor="668.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+            </content>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="21.0">
+                     <image>
+                        <Image url="@../img/Pedidos.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Tab>
+          <Tab text="Almacén">
+            <content>
+              <AnchorPane fx:id="almacenAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#limpiarTabAlamcen" prefHeight="262.0" prefWidth="358.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="6.0" text="Ingredientes">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="-19.0" layoutY="33.0" prefHeight="3.0" prefWidth="1046.0" AnchorPane.leftAnchor="-19.0" AnchorPane.rightAnchor="-3.0" />
+                        <TitledPane fx:id="ingrediantesTitledPane" layoutX="622.0" layoutY="42.0" prefHeight="353.0" prefWidth="367.0" text="Gestionar Ingredientes" AnchorPane.rightAnchor="6.0">
+                           <content>
+                              <VBox prefHeight="316.0" prefWidth="365.0" spacing="5.0">
+                                 <children>
+                                    <HBox prefHeight="239.0" prefWidth="337.0">
+                                       <children>
+                                          <VBox prefHeight="233.0" prefWidth="176.0" spacing="19.0">
+                                             <children>
+                                                <Label text="Nombre">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Unidad de medida">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Costo Unitario">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Tipo de moneda">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Cantidad adquirida">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="245.0" prefWidth="158.0" spacing="17.0">
+                                             <children>
+                                                <TextField fx:id="nombreIngredienteTextField" promptText="nombre del ingrediente" VBox.vgrow="ALWAYS">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </TextField>
+                                                <ComboBox fx:id="unidadIngredienteComboBox" prefHeight="25.0" prefWidth="211.0" promptText="unidad de medida" />
+                                                <TextField fx:id="costoIngredienteTextField" onKeyPressed="#validarCostoIngrediente" promptText="costo unitario" />
+                                                <ComboBox fx:id="tipoMonedaIngredienteComboBox" prefHeight="25.0" prefWidth="221.0" promptText="tipo de moneda" />
+                                                <TextField fx:id="cantidadIngredienteTextField" onKeyPressed="#validarCantidadIngrediente" prefHeight="13.0" prefWidth="189.0" promptText="cantidad adquirida" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="40.0" prefWidth="335.0" spacing="5.0">
+                                       <children>
+                                          <Button fx:id="adicionarIngredienteButton" mnemonicParsing="false" onAction="#adicionarIngrediente" prefHeight="39.0" prefWidth="107.0" styleClass="roundedButton" text="Adicionar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/addIngrediente.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="modificarIngredienteButton" disable="true" mnemonicParsing="false" onAction="#modificarIngrediente" prefHeight="57.0" prefWidth="107.0" styleClass="roundedButton" text="Modificar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/updIngrediente.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="eliminarIngredienteButton" disable="true" mnemonicParsing="false" onAction="#eliminarIngrediente" prefHeight="39.0" prefWidth="107.0" styleClass="roundedButton" text="Eliminar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/delIngrediente.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#1a09eb6e" />
+                           </effect>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TitledPane>
+                        <ImageView fitHeight="37.0" fitWidth="44.0" layoutX="934.0" layoutY="42.0" AnchorPane.rightAnchor="382.0">
+                           <image>
+                              <Image url="@../../img/flechaReceta1.png" />
+                           </image>
+                        </ImageView>
+                        <TitledPane fx:id="almacenTitledView" layoutX="21.0" layoutY="42.0" prefHeight="687.0" prefWidth="907.0" text="Almacén" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="432.0" AnchorPane.topAnchor="42.0">
+                           <content>
+                              <TableView fx:id="ingredientesTableViwe" onMouseClicked="#seleccionarIngrediente" prefHeight="680.0" prefWidth="926.0">
+                                 <columns>
+                                    <TableColumn fx:id="nombreIngredienteColumn" prefWidth="55.0" text="Nombre" />
+                                    <TableColumn fx:id="cantidadIngredienteColumn" prefWidth="129.0" text="Cantidad almacenada" />
+                                    <TableColumn fx:id="unidadIngredienteColumn" prefWidth="108.0" text="Unidad de medida" />
+                                    <TableColumn fx:id="costoIngredienteColumn" prefWidth="85.0" text="Costo unitario" />
+                                    <TableColumn fx:id="monedaIngredienteColumn" prefWidth="104.0" text="Tipo de moneda" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#1509eb8c" />
+                           </effect>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0">
+                     <image>
+                        <Image url="@../img/Almacen.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Tab>
+            <Tab text="Recetas">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#limpiarTabReceta" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" text="Recetas">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="428.0" text="Nueva receta" AnchorPane.bottomAnchor="279.0">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="475.0" text="Nombre" AnchorPane.bottomAnchor="237.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nombreProductoTextField" layoutX="103.0" layoutY="470.0" prefHeight="38.0" prefWidth="243.0" promptText="nombre del producto" AnchorPane.bottomAnchor="231.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font></TextField>
+                        <Accordion layoutX="333.0" layoutY="355.0" />
+                        <TitledPane fx:id="seleccionIngredientesProductoTitledPane" disable="true" expanded="false" layoutX="371.0" layoutY="372.0" prefHeight="294.0" prefWidth="555.0" text="Seleccionar ingredientes" AnchorPane.bottomAnchor="18.0">
+                           <content>
+                              <TableView fx:id="ingredientesProductoRecetaTableView" onMouseClicked="#seleccionarIngredienteReceta" prefHeight="297.0" prefWidth="374.0">
+                                 <columns>
+                                    <TableColumn fx:id="nombreSeleccionIngredienteProductoRecetaColumn" prefWidth="154.0" text="Ingrediente" />
+                                    <TableColumn fx:id="unidadSeleccionIngredienteProductoRecetaColumn" prefWidth="132.0" text="Unidad de medida" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                           <effect>
+                              <DropShadow color="#2510e396" />
+                           </effect>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane fx:id="ingredientesAgregadosProductoRecetaTitledPane" disable="true" expanded="false" layoutX="1076.0" layoutY="370.0" prefHeight="301.0" prefWidth="262.0" text="Ingredientes agregados" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="1076.0" AnchorPane.rightAnchor="22.0">
+                           <effect>
+                              <DropShadow color="#2510e396" />
+                           </effect>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <content>
+                              <TableView fx:id="ingredientesAgregadosProductoRecetaTableView" onMouseClicked="#seleccionarIngredienteAgregado" prefHeight="304.0" prefWidth="445.0">
+                                 <columns>
+                                    <TableColumn fx:id="nombreIngredienteProductoRecetaColumn" prefWidth="164.0" text="Ingrediente" />
+                                    <TableColumn fx:id="cantidadIngredienteProductoRecetaColumn" text="Cantidad" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </TitledPane>
+                        <ImageView fitHeight="45.0" fitWidth="132.0" layoutX="751.0" layoutY="428.0" visible="false" AnchorPane.bottomAnchor="266.0">
+                           <image>
+                              <Image url="@../../img/flechaReceta1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="617.0" layoutY="32.0">
+                           <image>
+                              <Image url="@../../img/flechaConfiguracion.png" />
+                           </image>
+                        </ImageView>
+                        <Pane fx:id="datosCantidadIngredientesRecetaPane" layoutX="927.0" layoutY="489.0" prefHeight="233.0" prefWidth="140.0" visible="false" AnchorPane.bottomAnchor="17.0">
+                           <children>
+                              <TextField fx:id="cantidadIngredienteProductotextFiel" layoutX="8.0" layoutY="24.0" onKeyPressed="#validarCantidadIngredienteReceta" prefHeight="25.0" prefWidth="124.0">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font></TextField>
+                              <Label layoutX="8.0" layoutY="-10.0" text="Cantidad">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="adicionarIngredienteProductoRecetaButton" layoutX="23.0" layoutY="127.0" mnemonicParsing="false" onAction="#adicionarIngredienteReceta" prefHeight="45.0" prefWidth="95.0" styleClass="roundedButton">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="56.0">
+                                       <image>
+                                          <Image url="@../img/flechaAgregar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="modificarIngredienteProductoRecetaButton" layoutX="23.0" layoutY="71.0" mnemonicParsing="false" onAction="#modificarIngredienteReceta" prefHeight="45.0" prefWidth="95.0" styleClass="roundedButton">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="38.0" fitWidth="46.0">
+                                       <image>
+                                          <Image url="@../img/flechaModificar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="eliminarIngredienteProductoRecetaButton" layoutX="23.0" layoutY="183.0" mnemonicParsing="false" onAction="#eliminarIngredienteReceta" prefHeight="45.0" prefWidth="95.0" styleClass="roundedButton">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="56.0">
+                                       <image>
+                                          <Image url="@../img/flechaEliminar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <TitledPane layoutX="20.0" layoutY="32.0" prefHeight="374.0" prefWidth="589.0" text="Productos" AnchorPane.bottomAnchor="333.0" AnchorPane.topAnchor="32.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <content>
+                              <VBox alignment="BOTTOM_CENTER" prefHeight="273.0" prefWidth="347.0">
+                                 <children>
+                                    <TableView fx:id="productosTableView" onMouseClicked="#seleccionarProductosRecetas" prefHeight="269.0" prefWidth="409.0">
+                                      <columns>
+                                        <TableColumn fx:id="nombreProductoColumn" prefWidth="267.0" text="Nombre de los productos" />
+                                      </columns>
+                                    </TableView>
+                                    <HBox prefHeight="28.0" prefWidth="409.0" />
+                                    <HBox alignment="CENTER" onMouseClicked="#limpiarSeleccionTablaProducto" prefHeight="107.0" prefWidth="409.0" spacing="10.0">
+                                       <children>
+                                          <Button fx:id="eliminarProductoButton" disable="true" mnemonicParsing="false" onAction="#eliminarProducto" prefHeight="41.0" prefWidth="132.0" styleClass="roundedButton" text="Eliminar">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="29.0">
+                                                   <image>
+                                                      <Image url="@../img/delProducto.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#1410eb6f" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane layoutX="676.0" layoutY="32.0" prefHeight="373.0" prefWidth="668.0" text="Receta" AnchorPane.bottomAnchor="334.0" AnchorPane.leftAnchor="676.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="32.0">
+                           <content>
+                              <TableView fx:id="recetasTableView" prefHeight="239.0" prefWidth="913.0">
+                                 <columns>
+                                    <TableColumn fx:id="nombreIngredienteRecetaColumn" prefWidth="235.0" text="Nombre del ingrediente" />
+                                    <TableColumn fx:id="cantidadIngredienteRecetaColumn" prefWidth="273.0" text="Cantidad" />
+                                 </columns>
+                                 <effect>
+                                    <DropShadow color="#2510e36e" />
+                                 </effect>
+                              </TableView>
+                           </content>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#0a07e374" />
+                           </effect>
+                        </TitledPane>
+                        <Button fx:id="crearRecetaProductoButton" layoutX="16.0" layoutY="512.0" mnemonicParsing="false" onAction="#crearReceta" prefHeight="47.0" prefWidth="119.0" styleClass="roundedButton" text="Crear receta" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="16.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="29.0">
+                                 <image>
+                                    <Image url="@../img/addProducto.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Separator layoutX="3.0" layoutY="412.0" prefHeight="6.0" prefWidth="1370.0" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-13.0">
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                 </light>
+                              </Lighting>
+                           </effect>
+                        </Separator>
+                        <Button fx:id="modificarProductoButton" disable="true" layoutX="14.0" layoutY="568.0" mnemonicParsing="false" onAction="#modificarProducto" prefHeight="47.0" prefWidth="119.0" styleClass="roundedButton" text="Modificar" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="14.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="29.0">
+                                 <image>
+                                    <Image url="@../img/updProducto.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="guardarCambiosRecetaButton" disable="true" layoutX="16.0" layoutY="624.0" mnemonicParsing="false" onAction="#guardarCambiosReceta" prefHeight="47.0" prefWidth="145.0" styleClass="roundedButton" text="Guardar Cambios" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="16.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="29.0">
+                                 <image>
+                                    <Image url="@../img/aceptar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children></AnchorPane>
+               </content>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="22.0">
+                     <image>
+                        <Image url="@../img/Receta.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Tab>
+            <Tab text="Configuración">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#limpiarTabConfiguracion" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TitledPane fx:id="monedaTitledPane" layoutX="318.0" layoutY="14.0" prefHeight="345.0" prefWidth="321.0" text="Tipo de moneda" visible="false" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="277.0" prefWidth="332.0">
+                                 <children>
+                                    <Label text="Nombre del tipo de moneda">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="monedaTextField" onKeyPressed="#validarNombreTipoMoneda" prefHeight="27.0" prefWidth="322.0" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="54.0" prefWidth="324.0" spacing="5.0">
+                                             <children>
+                                                <Button fx:id="adicionarMonedaButton" mnemonicParsing="false" onAction="#adicionarMonedas" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="modificarMonedaButton" disable="true" mnemonicParsing="false" onAction="#modificarMonedas" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="eliminarMonedaButton" disable="true" mnemonicParsing="false" onAction="#eliminarMonedas" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="monedasTableView" onMouseClicked="#seleccionarMoneda" prefHeight="194.0" prefWidth="336.0">
+                                      <columns>
+                                        <TableColumn fx:id="monedaColumn" prefWidth="192.0" text="Tipos de moneda" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#1f09ed82" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane fx:id="medidasTitledPane" layoutX="14.0" layoutY="14.0" prefHeight="345.0" prefWidth="293.0" text="Unidades de medida" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="242.0" prefWidth="361.0">
+                                 <children>
+                                    <Label text="Nombre de la unidad de medida">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="medidaTextField" prefHeight="25.0" prefWidth="234.0" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="372.0" spacing="5.0">
+                                             <children>
+                                                <Button fx:id="adicionarMedidaButton" mnemonicParsing="false" onAction="#adicionarMedida" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="21.0" fitWidth="21.0">
+                                                         <image>
+                                                            <Image url="@../img/addUnidad.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="modificarMedidaButton" disable="true" mnemonicParsing="false" onAction="#modificarMedida" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="21.0" fitWidth="21.0">
+                                                         <image>
+                                                            <Image url="@../img/updUnidad.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="eliminarMedidaButton" disable="true" mnemonicParsing="false" onAction="#eliminarMedida" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="21.0" fitWidth="21.0">
+                                                         <image>
+                                                            <Image url="@../img/delUnidad.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="medidasTableView" onMouseClicked="#seleccionarMedida" prefHeight="194.0" prefWidth="336.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="medidaColumn" prefWidth="205.0" text="Unidades de medida" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#e50e0e6a" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane fx:id="conceptoPagoTitledPane" layoutX="322.0" layoutY="14.0" prefHeight="345.0" prefWidth="321.0" text="Conceptos de pago" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="242.0" prefWidth="361.0">
+                                 <children>
+                                    <Label text="Nombre del concepto de pago">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="conceptoPagoTextField" onKeyPressed="#validarConceptoPago" prefHeight="25.0" prefWidth="234.0" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="372.0" spacing="5.0">
+                                             <children>
+                                                <Button fx:id="adicionarConceptoButton" mnemonicParsing="false" onAction="#adicionarConceptoPago" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/addConcepto.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="modificarConceptoButton" disable="true" mnemonicParsing="false" onAction="#modificarConceptoPago" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/updConcepto.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="eliminarConceptoButton" disable="true" mnemonicParsing="false" onAction="#eliminarConceptoPago" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/delConcepto.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="conceptosPagoTableView" onMouseClicked="#seleccionarConcepto" prefHeight="194.0" prefWidth="336.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="conceptoPagoColumn" prefWidth="270.0" text="Conceptos de pago" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#1b0cee73" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane fx:id="estadosTitledPane" layoutX="14.0" layoutY="371.0" prefHeight="361.0" prefWidth="314.0" text="Estados de los pedidos" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="371.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="242.0" prefWidth="361.0">
+                                 <children>
+                                    <Label text="Nombre del estado de un pedido">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nombreEstadoTextField" onKeyPressed="#validarEstadosPedidos" prefHeight="25.0" prefWidth="234.0" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="372.0" spacing="5.0">
+                                             <children>
+                                                <Button fx:id="adicionarEstadosButton" mnemonicParsing="false" onAction="#adicionarEstado" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/addEstado.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="modificarEstadosButton" disable="true" mnemonicParsing="false" onAction="#modificarEstado" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/updEstado.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="eliminarEstadosButton" disable="true" mnemonicParsing="false" onAction="#eliminarEstado" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/delEstado.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="estadosTableView" onMouseClicked="#seleccionarEstado" prefHeight="194.0" prefWidth="336.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="estadoColumn" prefWidth="205.0" text="Estados de los pedidos" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#e50e0e6a" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane fx:id="gastosAuxiliaresTitledPane" layoutX="347.0" layoutY="371.0" prefHeight="361.0" prefWidth="396.0" text="Salarios de los gastos asignados" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="371.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="283.0" prefWidth="344.0">
+                                 <children>
+                                    <Label text="Monto del salario">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="salarioTextField" onKeyPressed="#validarMontoSalario" prefHeight="27.0" prefWidth="322.0" />
+                                    <HBox alignment="CENTER" prefHeight="149.0" prefWidth="374.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="69.0" prefWidth="324.0" spacing="5.0">
+                                             <children>
+                                                <Button fx:id="adicionarGastoButton" mnemonicParsing="false" onAction="#adicionarGasto" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/addSalario.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="modificarGastoButton" disable="true" mnemonicParsing="false" onAction="#modificarGasto" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/updSalario.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="eliminaGastoButton" disable="true" mnemonicParsing="false" onAction="#eliminarGastoButton" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/delSalario.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="gastosTableView" onMouseClicked="#seleccionarSalario" prefHeight="249.0" prefWidth="388.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="conceptoPagoGastoColumn" prefWidth="144.0" text="Concepto de pago" />
+                                          <TableColumn fx:id="monedaGastoColumn" prefWidth="113.0" text="Tipo de moneda" />
+                                          <TableColumn fx:id="salarioGastoColumn" prefWidth="69.0" text="Monto" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#1f09e08a" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane fx:id="productogastoAuxiliarTitledPane" layoutX="926.0" layoutY="371.0" prefHeight="359.0" prefWidth="597.0" text="Asignar gasto auxiliar a un producto" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="371.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="283.0" prefWidth="344.0">
+                                 <children>
+                                    <TableView fx:id="productosGastosTableView" prefHeight="194.0" prefWidth="336.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="nombreProductosGastosColumn" prefWidth="249.0" text="Productos" />
+                                       </columns>
+                                    </TableView>
+                                    <HBox prefHeight="156.0" prefWidth="629.0">
+                                       <children>
+                                          <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="777.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Button fx:id="eliminarGastoProductoButton" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#eliminarGastoProducto" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/delGastoAsing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="modificarGastoProductoButton" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#modificarGastoProducto" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/updGastoAsing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="adicionarGastoProductoButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#adicionarGastoProducto" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0">
+                                                         <image>
+                                                            <Image url="@../img/addGastoAsing.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="gastosAuxiliaresProductoTableView" onMouseClicked="#seleccionarGastoProducto" prefHeight="194.0" prefWidth="379.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="nombreGastosAuxiliaresProductoColumn" prefWidth="213.0" text="Producto" />
+                                          <TableColumn fx:id="gastoAuxiliarProductoColumn" prefWidth="233.0" text="Gasto asignado" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#210be393" />
+                           </effect>
+                        </TitledPane>
+                        <TitledPane fx:id="ingredientesRangoTitledPane" layoutX="696.0" layoutY="14.0" prefHeight="344.0" prefWidth="693.0" text="Asignar rango crítico a ingredientes" AnchorPane.leftAnchor="662.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="283.0" prefWidth="344.0">
+                                 <children>
+                                    <TableView fx:id="IngredientesRangoTableView" prefHeight="142.0" prefWidth="376.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="nombreIngredienteRangoColumn" prefWidth="147.0" text="Ingrediente" />
+                                          <TableColumn fx:id="unidadMedidaIngredienteRangoColumn" prefWidth="126.0" text="Unidad de medida" />
+                                       </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER" prefHeight="53.0" prefWidth="376.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Rango crítico">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="rangoCriticoTextField" onKeyPressed="#validarRangoCritico">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="777.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Button fx:id="eliminarIngredienteRangoButton" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#eliminarIngredienteRango" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Eliminar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/delRango.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="modificarIngredienteRangoButton" contentDisplay="RIGHT" disable="true" mnemonicParsing="false" onAction="#modificarIngredienteRango" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Modificar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/upRango.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="adicionarIngredienteRangoButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#adicionarIngredienteRango" prefHeight="36.0" prefWidth="102.0" styleClass="roundedButton" text="Adicionar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="25.0">
+                                                   <image>
+                                                      <Image url="@../img/addRango.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="ingredientesRangoInsertadosTableView" onMouseClicked="#seleccionarRangoIngrediente" prefHeight="136.0" prefWidth="376.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="ingredienteInsertadoRangoColumn" prefWidth="147.0" text="Ingrediente" />
+                                          <TableColumn fx:id="rangoInsertadoRangoColumn" prefWidth="102.0" text="Rango Crítico" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <effect>
+                              <DropShadow color="#e30b0b94" />
+                           </effect>
+                        </TitledPane>
+                     </children></AnchorPane>
+               </content>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="20.0">
+                     <image>
+                        <Image url="@../img/Configuracion.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Tab>
+            <Tab text="Reportes">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#limpiarTabReportes" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TitledPane fx:id="ganaciaTitledPane" layoutX="14.0" layoutY="14.0" prefHeight="712.0" prefWidth="659.0" text="Ganancia semanal y mensual" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="687.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="396.0" spacing="15.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Establecer ciclo">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="cicloGanaciaComboBox" onAction="#obtenerGanancia" prefWidth="150.0" promptText="ciclos" />
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="ganaciaTableView" prefHeight="595.0" prefWidth="629.0" VBox.vgrow="ALWAYS">
+                                      <columns>
+                                        <TableColumn fx:id="fechaInicioColumn" prefWidth="91.00003051757812" text="Fecha Inicio" />
+                                        <TableColumn fx:id="fechaFinColumn" prefWidth="72.99996948242188" text="Fecha de Fin" />
+                                          <TableColumn fx:id="costoReporteColumn" prefWidth="61.0" text="Costo" />
+                                          <TableColumn fx:id="ganaciaReporteColumn" prefWidth="75.0" text="Ganancia" />
+                                          <TableColumn fx:id="ventaReporteColumn" prefWidth="75.0" text="Venta" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                        <TitledPane layoutX="921.0" layoutY="14.0" prefHeight="712.0" prefWidth="662.0" text="Ventas por productos semanal y mensual" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="684.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="396.0" spacing="15.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Establecer ciclo">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="cicloProductosComboBox" onAction="#obtenerProductosGanancia" prefWidth="150.0" promptText="ciclos" />
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="productosReporteTableView" prefHeight="608.0" prefWidth="632.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="productoReporteColumn" prefWidth="91.00003051757812" text="Producto" />
+                                          <TableColumn fx:id="cantidadProductoReporteColumn" prefWidth="91.00003051757812" text="Cantidad" />
+                                          <TableColumn fx:id="fechaInicioProductoReporteColumn" prefWidth="91.00003051757812" text="Fecha Inicio" />
+                                          <TableColumn fx:id="fechaFinProductoReporteColumn" prefWidth="72.99996948242188" text="Fecha de Fin" />
+                                          <TableColumn fx:id="costoProductoReporteColumn" prefWidth="61.0" text="Costo" />
+                                          <TableColumn fx:id="ganaciaProductoReporteColumn" prefWidth="75.0" text="Ganancia" />
+                                          <TableColumn fx:id="ventaProductoReporteColumn" prefWidth="75.0" text="Venta" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                     </children>
+                     <effect>
+                        <DropShadow color="#0508e384" />
+                     </effect>
+                  </AnchorPane>
+              </content>
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Reportes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
